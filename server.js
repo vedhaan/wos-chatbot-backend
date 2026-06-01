@@ -25,7 +25,7 @@ Your job:
 
 // ── Middleware ────────────────────────────────────────────
 app.use(cors({
-  origin: 'https://their-shopify-store.myshopify.com'
+  origin: "*", // Later: lock this to your Shopify store URL
 }));
 app.use(express.json());
 
