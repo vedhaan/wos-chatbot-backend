@@ -74,7 +74,7 @@
       "sizes_available": ["FREESIZE"],
 
       "measurements": {
-        "FREESIZE": { "bust": 41, "top_waist": 40, "shoulder": 16, "top_length": 28, "sleeve_length": 22 },
+        "FREESIZE": { "bust": 41, "top_waist": 40, "shoulder": 16, "top_length": 28, "sleeve_length": 22 }
       },
 
       "images": [
@@ -112,7 +112,7 @@
       "sizes_available": ["FREESIZE"],
 
       "measurements": {
-        "FREESIZE": { "bust": 41, "top_waist": 40, "shoulder": 16, "top_length": 28, "sleeve_length": 22 },
+        "FREESIZE": { "bust": 41, "top_waist": 40, "shoulder": 16, "top_length": 28, "sleeve_length": 22 }
       },
 
       "images": [
@@ -150,7 +150,7 @@
       "sizes_available": ["FREESIZE"],
 
       "measurements": {
-        "FREESIZE": { "bust": 41, "top_waist": 40, "shoulder": 16, "top_length": 28, "sleeve_length": 22 },
+        "FREESIZE": { "bust": 41, "top_waist": 40, "shoulder": 16, "top_length": 28, "sleeve_length": 22 }
       },
 
       "images": [
