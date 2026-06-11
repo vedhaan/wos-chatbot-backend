@@ -1,0 +1,163 @@
+{
+  "store": {
+    "name": "World of Sugandh",
+    "email": "worldofsugandh@gmail.com",
+    "whatsapp": "+91963842222",
+    "address": "Rudra House, 1st Floor, D-46 Kalyasdad, Bhavnagar, Gujarat 364001",
+    "shipping_policy": "The terms of Delivery Policy must be understood. If you do not agree to the terms contained in this Delivery Policy, you are advised not to accept the Terms of Use and the Delivery Policy. The terms contained in this Delivery Policy shall be accepted without modification and accordingly, to be bound by the terms contained herein. Team “World of Sugandh” is committed to deliver all orders with good quality packaging within a span of 5 working days (excluding Sundays & Public holidays) under normal circumstances. “World of Sugandh” (WoS) makes all commercially reasonable endeavors to ensure that the Product(s) are delivered to end users in a timely fashion. To ensure that the order reaches in a good condition, in the shortest span of time, we ship through reputed logistics companies. ",
+
+    "exchange_policy": "You can raise the size exchange request from 'My Account' section with ease or you can drop us a mail at worldofsugandh@gmail.com mentioning the new required size and you will get a revert within 24 working hours. We will arrange a pick-up of the product delivered to you and get a fresh piece made in the new required size and it will be dispatched as soon as it gets ready. In case pickup facility is not available on the provided pin code, customer has to ship the product back to The WoS office at her/his own risks, costs & responisbility within 7 days of receipt of the product. In case of size problem, we can always get it exchanged to a size you need. For Size Exchanges, the product should be unused/unworn & Tag should be intact and request should be raised within 7 days of delivery. If a piece is exchanged once, it cannot be returned or exchanged the second time. In case the new required size required is not available, Our Standard Returns and Cancellation Policy is applicable.",
+
+    "return_policy": "You can raise the return request from 'My Account' section or drop us a mail at worldofsugandh@gmail.com mentioning that you need a STORE CREDIT for the product delivered and you will get a revert within next 24 working hours. We will arrange a pick-up of the product delivered to you. In case pickup facility is not available on the provided pin code, customer has to ship the product back to The WoS office at her/his own risks, costs & responisbility within 7 days of receipt of the product. The product should be unused/unworn & Tag should be intact and request should be raised within 3 days of delivery. As soon as we get the product back, We provide a Store Credit - We add amount equal to the product value to your ' WoS Account ' . You can use this credit amount when you reach the cart/payment page of the website during your next purchase with us. Store Credit will be issued within 24 hours of receiving the product back. THIS EXCHANGE POLICY IS APPLICABLE ONLY FOR DOMESTIC ORDERS/ORDERS DELIVERED WITHIN INDIA ONLY. FOR INTERNATIONAL ORDERS, REGULAR RETUNS AND CANCELLATION POLICY IS APPLICABLE FOR EXCHANGE.",
+
+    "payment_options": ["Credit/Debit Card", "UPI/QR CODE", "Net Banking", "Cash on Delivery (COD), Wallets (Paytm, PhonePe)" ]
+  },
+
+  "collections": [
+    { "id": "kurta-set", "name": "Kurta Set" },
+    { "id": "coord-Set", "name": "Co-ord Set" },
+    { "id": "dresses", "name": "Dresses" },
+    { "id": "tops-shirts", "name": "Tops & Shirts" },
+    { "id": "anarkali-set", "name": "Anarkali Set" },
+    { "id": "kaftan", "name": "Kaftan" },
+    { "id": "lehengas", "name": "Lehengas" },
+    { "id": "indo-western", "name": "Indo Westerns" },
+    { "id": "wedding-wear", "name": "Wedding Wear" },
+    { "id": "everyday-wear", "name": "Everyday Wear" },
+    { "id": "party-wear", "name": "Party Wear" },
+    { "id": "seasonal-wear", "name": "Seasonal Wear" },
+    { "id": "holiday-picks", "name": "Holiday Picks" },
+    { "id": "office-wear", "name": "office-wear" },
+    { "id": "mehandi-haldi", "name": "Mehandi & Haldi" },
+    { "id": "sangeet-cocktails", "name": "Sangeet & Cocktails" },
+    { "id": "engagement", "name": "Engagement" },
+    { "id": "trousseau-pick", "name": "Trousseau Picks" },
+    { "id": "wedding-day", "name": "Wedding Day" },
+    { "id": "post-wedding", "name": "Post Wedding" },
+    { "id": "pooja-perfect", "name": "Pooja Perfect" },
+    { "id": "ready-to-ship", "name": "Ready To Ship" },
+    { "id": "70%off", "name": "70% OFF" },
+    { "id": "50%off", "name": "50% OFF" },
+    { "id": "bestseller", "name": "Bestseller" },
+    { "id": "summer-spcial", "name": "Summer Special" },
+    { "id": "holiday-special", "name": "Holiday Special" },
+    { "id": "trending", "name": "Trending" }
+  ],
+
+  "products": [
+    {
+      "id": "UA-2203",
+      "name": "Midnight Allure Shirt",
+      "collections": ["everyday-wear", "holiday-special", "tops-shirts"],
+      "price": 3499,
+      "original_price": 3499,
+      "discount_percent": 0,
+      "currency": "INR",
+      "in_stock": true,
+      "ready_to_ship": false,
+      "shipping_days": 7,
+
+      "details": {
+        "fit": "Loose Fit",
+        "color": "Navy",
+        "neckline": "Shirt Collor",
+        "number_of_components": 1,
+        "description": "A symphony of sophistication and shimmer.This navy blue shirt captures the essence of quiet luxury with its lustrous finish and intricate thread embroidery inspired by radiant sunbursts. Tailored in a soft satin-cotton blend, it exudes a structured yet fluid silhouette — perfect for modern women who appreciate effortless elegance."
+      },
+
+      "fabric": {
+        "top": "Cotton Silk",
+        "bottom": "Cotton Silk",
+        "washcare": "Dry-clean only"
+      },
+
+      "sizes_available": ["FREESIZE"],
+
+      "measurements": {
+        "FREESIZE": { "bust": 41, "top_waist": 40, "shoulder": 16, "top_length": 28, "sleeve_length": 22 },
+      },
+
+      "images": [
+        "https://sugandh.co/cdn/shop/files/MidnightAllure_2_1024x1024.webp?v=1765370769"
+      ],
+
+      "url": "https://sugandh.co/products/midnight-allure-shirt"
+    },
+    {
+      "id": "UA-2215",
+      "name": "Noir Elegance Shirt",
+      "collections": ["office-wearr", "holiday-special", "tops-shirts"],
+      "price": 3699,
+      "original_price": 3699,
+      "discount_percent": 0,
+      "currency": "INR",
+      "in_stock": true,
+      "ready_to_ship": false,
+      "shipping_days": 7,
+
+      "details": {
+        "fit": "Loose Fit",
+        "color": "Black",
+        "neckline": "Shirt Collor",
+        "number_of_components": 1,
+        "description": "This classic black shirt embodies quiet luxury with tonal bead embroidery that subtly catches the light, adding depth and allure to its minimal design. Tailored from a soft satin-cotton fabric, it offers a perfect balance between structure and comfort — making it a versatile wardrobe essential that transitions effortlessly from day to dusk."
+      },
+
+      "fabric": {
+        "top": "Cotton Silk",
+        "bottom": "Cotton Silk",
+        "washcare": "Dry-clean only"
+      },
+
+      "sizes_available": ["FREESIZE"],
+
+      "measurements": {
+        "FREESIZE": { "bust": 41, "top_waist": 40, "shoulder": 16, "top_length": 28, "sleeve_length": 22 },
+      },
+
+      "images": [
+        "https://sugandh.co/cdn/shop/files/NoirEleganceShirt_6_1024x1024.png?v=1780666991"
+      ],
+
+      "url": "https://sugandh.co/products/noir-elegance-shirt"
+    },
+    {
+      "id": "UA-2214",
+      "name": "Blush Aura Shirt",
+      "collections": ["everyday-wear", "holiday-special", "tops-shirts"],
+      "price": 3799,
+      "original_price": 3799,
+      "discount_percent": 0,
+      "currency": "INR",
+      "in_stock": true,
+      "ready_to_ship": false,
+      "shipping_days": 7,
+
+      "details": {
+        "fit": "Loose Fit",
+        "color": "Pink, Golden",
+        "neckline": "Shirt Collor",
+        "number_of_components": 1,
+        "description": "This blush-toned shirt radiates effortless elegance with its bold handcrafted floral motif in shades of teal, gold, and black. The intricate bead embroidery adds a touch of couture artistry, turning minimalism into modern luxury. Crafted in a smooth satin-cotton fabric, it captures both comfort and character — a timeless piece that celebrates feminine strength with a contemporary edge."
+      },
+
+      "fabric": {
+        "top": "Cotton Silk",
+        "bottom": "Cotton Silk",
+        "washcare": "Dry-clean only"
+      },
+
+      "sizes_available": ["FREESIZE"],
+
+      "measurements": {
+        "FREESIZE": { "bust": 41, "top_waist": 40, "shoulder": 16, "top_length": 28, "sleeve_length": 22 },
+      },
+
+      "images": [
+        "https://sugandh.co/cdn/shop/files/BlushAuraShirt_2_1024x1024.webp?v=1765274176"
+      ],
+
+      "url": "https://sugandh.co/products/blush-aura-shirt"
+    }
+  ]
+}
