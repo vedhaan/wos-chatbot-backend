@@ -129,7 +129,6 @@ app.post("/chat", async (req, res) => {
   }
 
   try {
-    // Reload data on every request so client updates reflect immediately
     const storeData = loadStoreData();
     const SYSTEM_PROMPT = buildSystemPrompt(storeData);
 
@@ -146,6 +145,9 @@ app.post("/chat", async (req, res) => {
       })),
     });
 
+    const result = await chat.sendMessage(message.trim());
+    const responseText = result.response.text();
+
     history.push({ role: "user", content: message.trim() });
     history.push({ role: "assistant", content: responseText });
 
@@ -154,11 +156,14 @@ app.post("/chat", async (req, res) => {
     res.json({ reply: responseText });
 
   } catch (error) {
-    console.error("Groq API error:", error.message);
+    console.error("Gemini API error:", error.message);
     res.status(500).json({ error: "Something went wrong. Please try again." });
   }
 });
 
+app.listen(PORT, () => {
+  console.log(`Server running on port ${PORT} — build check v3`);
+});
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT} — build check v2`);
 });
