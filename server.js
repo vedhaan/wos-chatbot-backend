@@ -136,7 +136,7 @@ app.post("/chat", async (req, res) => {
     const history = sessions.get(sessionId);
 
     const chat = genAI.getGenerativeModel({
-      model: "gemini-1.5-flash",
+      model: "gemini-2.5-flash",
       systemInstruction: SYSTEM_PROMPT,
     }).startChat({
       history: history.map(h => ({
