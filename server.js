@@ -24,11 +24,15 @@ function loadStoreData() {
 }
 
 function buildSystemPrompt(data) {
-  if (!data) {
-    return `You are a helpful shopping assistant for "World of Sugandh", a clothing brand. 
-    Answer general questions about fashion and clothing. 
-    If asked about specific products, say you don't have that information right now and suggest contacting support.`;
+  if (!data || !Array.isArray(data.collections) || !Array.isArray(data.products)) {
+    console.error("data.json malformed. Keys found:", data ? Object.keys(data) : "data is null");
+    return `You are a helpful shopping assistant for "World of Sugandh"...`;
   }
+  // if (!data) {
+  //   return `You are a helpful shopping assistant for "World of Sugandh", a clothing brand. 
+  //   Answer general questions about fashion and clothing. 
+  //   If asked about specific products, say you don't have that information right now and suggest contacting support.`;
+  // }
 
   const { store, collections, products } = data;
 
