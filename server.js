@@ -146,18 +146,6 @@ app.post("/chat", async (req, res) => {
       })),
     });
 
-    const result = await chat.sendMessage(message.trim());
-    const responseText = result.response.text();
-
-    const completion = await groq.chat.completions.create({
-      model: "llama-3.1-8b-instant",
-      messages,
-      max_tokens: 500,
-      temperature: 0.7,
-    });
-
-    const responseText = completion.choices[0].message.content;
-
     history.push({ role: "user", content: message.trim() });
     history.push({ role: "assistant", content: responseText });
 
