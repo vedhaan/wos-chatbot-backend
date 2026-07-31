@@ -38,7 +38,7 @@ function buildSystemPrompt(data) {
     .join("\n");
 
   // Build readable product list
-  const productList = products.map(p => {
+  const productList = products .filter(p => p && p.id && Array.isArray(p.collections)).map(p => {
     const cols = p.collections
       .map(cid => collections.find(c => c.id === cid)?.name || cid)
       .join(", ");
@@ -161,6 +161,10 @@ app.post("/chat", async (req, res) => {
     console.error("Groq API error:", error.message);
     res.status(500).json({ error: "Something went wrong. Please try again." });
   }
+});
+
+app.listen(PORT, () => {
+  console.log(`Server running on port ${PORT} — build check v2`);
 });
 
 app.listen(PORT, () => {
