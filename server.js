@@ -1,7 +1,7 @@
 const express = require("express");
 const cors = require("cors");
 const dotenv = require("dotenv");
-const Groq = require("groq-sdk");
+const { GoogleGenerativeAI } = require("@google/generative-ai");
 const fs = require("fs");
 const path = require("path");
 
@@ -10,7 +10,8 @@ dotenv.config();
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-const groq = new Groq({ apiKey: process.env.GROQ_API_KEY });
+const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
+const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" }); // or gemini-1.5-pro
 
 // ── Load store data ───────────────────────────────────────
 function loadStoreData() {
@@ -38,7 +39,7 @@ function buildSystemPrompt(data) {
     .join("\n");
 
   // Build readable product list
-  const productList = products .filter(p => p && p.id && Array.isArray(p.collections)).map(p => {
+  const productList = products.filter(p => p && p.id && Array.isArray(p.collections)).map(p => {
     const cols = p.collections
       .map(cid => collections.find(c => c.id === cid)?.name || cid)
       .join(", ");
@@ -51,10 +52,10 @@ function buildSystemPrompt(data) {
 
     const measurements = p.measurements
       ? Object.entries(p.measurements)
-          .map(([size, m]) =>
-            `    ${size}: Bust ${m.bust}", Waist ${m.top_waist}", Shoulder ${m.shoulder}", Length ${m.top_length}", Sleeve ${m.sleeve_length}"`
-          )
-          .join("\n")
+        .map(([size, m]) =>
+          `    ${size}: Bust ${m.bust}", Waist ${m.top_waist}", Shoulder ${m.shoulder}", Length ${m.top_length}", Sleeve ${m.sleeve_length}"`
+        )
+        .join("\n")
       : "Not available";
 
     return `
@@ -135,11 +136,18 @@ app.post("/chat", async (req, res) => {
     if (!sessions.has(sessionId)) sessions.set(sessionId, []);
     const history = sessions.get(sessionId);
 
-    const messages = [
-      { role: "system", content: SYSTEM_PROMPT },
-      ...history,
-      { role: "user", content: message.trim() },
-    ];
+    const chat = genAI.getGenerativeModel({
+      model: "gemini-1.5-flash",
+      systemInstruction: SYSTEM_PROMPT,
+    }).startChat({
+      history: history.map(h => ({
+        role: h.role === "assistant" ? "model" : "user",
+        parts: [{ text: h.content }],
+      })),
+    });
+
+    const result = await chat.sendMessage(message.trim());
+    const responseText = result.response.text();
 
     const completion = await groq.chat.completions.create({
       model: "llama-3.1-8b-instant",
