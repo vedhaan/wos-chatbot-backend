@@ -10,13 +10,16 @@ dotenv.config();
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
+const genAI = new GoogleGenerativeAI(
+  process.env.GEMINI_API_KEY
+);
+
 
 // ─────────────────────────────────────────────
 // Models
 // ─────────────────────────────────────────────
-const PRIMARY_MODEL = "gemini-2.5-flash-lite";
-const FALLBACK_MODEL = "gemini-2.5-flash";
+const PRIMARY_MODEL = "gemini-3.5-flash-lite";
+const FALLBACK_MODEL = "gemini-3.5-flash";
 
 // ─────────────────────────────────────────────
 // Load store data
@@ -171,20 +174,16 @@ async function generateResponse({
   history,
   systemPrompt
 }) {
-
   const models = [
-    PRIMARY_MODEL,
-    FALLBACK_MODEL
+    "gemini-3.5-flash-lite",
+    "gemini-3.5-flash"
   ];
 
   let lastError = null;
 
   for (const modelName of models) {
-
     for (let attempt = 0; attempt < 3; attempt++) {
-
       try {
-
         console.log(
           `Gemini request → ${modelName} | attempt ${attempt + 1}`
         );
@@ -196,27 +195,16 @@ async function generateResponse({
 
         const chat = model.startChat({
           history: history.map(h => ({
-            role:
-              h.role === "assistant"
-                ? "model"
-                : "user",
-
-            parts: [
-              {
-                text: h.content
-              }
-            ]
+            role: h.role === "assistant" ? "model" : "user",
+            parts: [{ text: h.content }]
           }))
         });
 
-        const result = await chat.sendMessage(
-          message.trim()
-        );
+        const result = await chat.sendMessage(message.trim());
 
         return result.response.text();
 
       } catch (error) {
-
         lastError = error;
 
         const status =
@@ -228,31 +216,44 @@ async function generateResponse({
           error.message
         );
 
-        // Only retry temporary errors
+        // Model doesn't exist / isn't available.
+        // Retrying won't help.
+        if (status === 404) {
+          console.error(
+            `Model ${modelName} is unavailable. Trying next model...`
+          );
+          break;
+        }
+
+        // Permanent client/auth errors.
         if (
-          status !== 503 &&
-          status !== 429 &&
-          status !== 500 &&
-          status !== 408
+          status === 400 ||
+          status === 401 ||
+          status === 403
         ) {
           throw error;
         }
 
-        // Exponential backoff:
-        // 1s → 2s → 4s
-        const delay = Math.pow(2, attempt) * 1000;
+        // Retry only temporary errors.
+        if (
+          status === 429 ||
+          status === 500 ||
+          status === 503 ||
+          status === 408
+        ) {
+          const delay = Math.pow(2, attempt) * 1000;
 
-        console.log(
-          `Retrying in ${delay / 1000}s...`
-        );
+          console.log(
+            `Temporary Gemini error. Retrying in ${delay / 1000}s...`
+          );
 
-        await sleep(delay);
+          await sleep(delay);
+          continue;
+        }
+
+        throw error;
       }
     }
-
-    console.log(
-      `Primary/fallback model ${modelName} failed.`
-    );
   }
 
   throw lastError;
