@@ -41,7 +41,10 @@ function buildSystemPrompt(data) {
   // Build readable product list
   const productList = products.filter(p => p && p.id && Array.isArray(p.collections)).map(p => {
     const cols = p.collections
-      .map(cid => collections.find(c => c.id === cid)?.name || cid)
+      .map(cid => {
+        const found = collections.find(c => c.id === cid || c.name === cid);
+        return found ? found.name : cid; // fallback: just show the raw value
+      })
       .join(", ");
 
     const sizes = p.sizes_available.join(", ");
